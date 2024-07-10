@@ -29,7 +29,7 @@ public class MemberController {
     public int checkDuplicateEmail(@RequestParam("memberEmail") String memberEmail) {
         log.info("POST /member/checkEmail");
         log.debug("memberEmail = {}", memberEmail);
-        int result = memberQueryService.checkDuplicateEmail(memberEmail);
+        int result = memberCommandService.checkDuplicateEmail(memberEmail);
         return result; // 중복되지 않으면 0, 중복되면 1
     }
 
@@ -41,7 +41,6 @@ public class MemberController {
         log.debug("memberDto = {}", memberRegistDto);
         MemberDto memberDto = memberRegistDto.toMemeberDto();
         int result = memberCommandService.insertMember(memberDto);
-//        return "%s님, 회원가입에 성공하셨습니다".formatted(memberDto.getMemberName());
         return "redirect:/";
     }
 }

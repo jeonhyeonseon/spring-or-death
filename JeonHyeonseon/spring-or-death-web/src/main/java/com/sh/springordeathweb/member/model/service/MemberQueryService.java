@@ -11,8 +11,4 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class MemberQueryService {
     private final MemberMapper memberMapper;
-
-    public int checkDuplicateEmail(String memberEmail){
-        return memberMapper.checkDuplicateEmail(memberEmail);
-    }
 }

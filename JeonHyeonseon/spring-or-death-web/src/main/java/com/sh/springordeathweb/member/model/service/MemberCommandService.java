@@ -15,4 +15,8 @@ public class MemberCommandService {
     public int insertMember(MemberDto memberDto) {
         return memberMapper.insertMember(memberDto);
     }
+
+    public int checkDuplicateEmail(String memberEmail){
+        return memberMapper.checkDuplicateEmail(memberEmail);
+    }
 }
