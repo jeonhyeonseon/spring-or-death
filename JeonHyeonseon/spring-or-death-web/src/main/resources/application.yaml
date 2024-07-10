@@ -1,8 +1,8 @@
 spring:
   application:
-    name: spring-or-death-web
+    name: spring_or_death
   datasource:
-    url: mysql://localhost:3306/springdb
+    url: jdbc:mysql://localhost:3306/springdb
     username: sh
     password: sh
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -13,10 +13,6 @@ spring:
       minimum-idle: 5
       idle-timeout: 30000
       auto-commit: false
-    servlet:
-      multipart:
-        max-request-size: 50MB
-        max-file-size: 10MB
 
 logging:
   level:
