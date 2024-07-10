@@ -24,7 +24,7 @@ public class MemberController {
         log.info("GET /member/regist");
     }
 
-    @GetMapping("/checkEmail")
+    @PostMapping("/checkEmail")
     @ResponseBody
     public int checkDuplicateEmail(@RequestParam("memberEmail") String memberEmail) {
         log.info("POST /member/checkEmail");
@@ -34,14 +34,14 @@ public class MemberController {
     }
 
     @PostMapping("/regist")
-    @ResponseBody // 이 핸들러의 반환객체를 직접 http 응답 메시지 본문(body)에 작성
+//    @ResponseBody // 이 핸들러의 반환객체를 직접 http 응답 메시지 본문(body)에 작성
     public String regist(
-            @ModelAttribute MemberRegistDto memberRegistDto,
-            @RequestParam String memberName){
+            @ModelAttribute MemberRegistDto memberRegistDto){
         log.info("POST /member/regist");
         log.debug("memberDto = {}", memberRegistDto);
         MemberDto memberDto = memberRegistDto.toMemeberDto();
         int result = memberCommandService.insertMember(memberDto);
-        return "%s님, 회원가입에 성공하셨습니다".formatted(memberName);
+//        return "%s님, 회원가입에 성공하셨습니다".formatted(memberDto.getMemberName());
+        return "redirect:/";
     }
 }

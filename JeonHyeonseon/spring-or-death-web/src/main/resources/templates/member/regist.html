@@ -65,7 +65,7 @@
 
 <main class="container">
     <h2>회원가입폼</h2>
-    <form>
+    <form name="memberRegistFrm" method="post">
         <div class="form-group">
             <label for="email">이메일</label>
             <div class="input-group">
@@ -112,16 +112,15 @@
     function emailCheck() {
         const memberEmail = $('#email').val();
         $.ajax({
-            url : '/member/checkEmail',
-            method : 'get', // get방식
+            url : '[[@{/member/checkEmail}]',
+            method : 'post', // 개인정보이기 때문에 get방식이 아닌 post방식으로 작성한다.
             data : {
                 memberEmail : memberEmail
             },
             success : function (result) {
                 if (result === 0) {
-                    console.log('중복되는 이메일이 존재하지 않습니다.');
+                    alert('중복되는 이메일이 존재하지 않습니다.');
                     submitEmail = true;
-                    alert('');
                 } else {
                     alert('이미 존재하는 이메일입니다. 다시 입력해주세요.')
                 }

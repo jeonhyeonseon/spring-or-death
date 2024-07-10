@@ -16,7 +16,7 @@
             count(*)
         from
             member
-        where이렇
+        where
             member_email = #{memberEmail}
     </select>
 </mapper>
