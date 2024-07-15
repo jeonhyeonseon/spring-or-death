@@ -65,7 +65,7 @@
 
 <main class="container">
     <h2>회원가입폼</h2>
-    <form name="memberRegistFrm" method="post">
+    <form id="memberRegistFrm" method="post">
         <div class="form-group">
             <label for="email">이메일</label>
             <div class="input-group">
@@ -78,6 +78,7 @@
         <div class="form-group">
             <label for="password">비밀번호</label>
             <input type="password" class="form-control" id="password" name="memberPassword" placeholder="비밀번호를 입력하세요" required>
+            <p id="passwordMatch"></p>
         </div>
         <div class="form-group">
             <label for="confirmPassword">비밀번호 확인</label>
@@ -88,7 +89,7 @@
             <input type="text" class="form-control" id="name" name="memberName" placeholder="이름을 입력하세요" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">제출</button>
+        <button type="button" id="submitBtn" class="btn btn-primary">제출</button>
     </form>
 </main>
 <script>
@@ -123,6 +124,22 @@
             }
         });
     };
+
+    document.querySelector("#submitBtn").onclick = () => {
+        const btn = document.querySelector("#checkEmailBtn");
+        const pwd1 = document.querySelector("#password");
+        const pwd2 = document.querySelector("#confirmPassword").value();
+        if (btn.dataset.status === "unchecked") {
+            alert("이메일 중복 체크를 먼저 확인해주세요")
+            return;
+        } else if (pwd1 !== pwd2) {
+            alert("비밀번호가 일치하지 았습니다.")
+            return;
+        } else {
+            document.querySelector("#memberRegistFrm").submit();
+            alert("회원가입이 성공적으로 완료되었습니다.")
+        }
+    }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
